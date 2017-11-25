@@ -1,0 +1,2 @@
+# Bedwars
+Famous Bukkit MiniGame
