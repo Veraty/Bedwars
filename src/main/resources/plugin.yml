@@ -1,0 +1,11 @@
+##########################
+#        Bedwars         #
+#       by Veraty        #
+##########################
+
+name: Bedwars
+version: 0.0.1 
+author: 
+  - Veraty
+
+main: de.veraty.bedwars.BedwarsPlugin
