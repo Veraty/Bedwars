@@ -37,6 +37,19 @@ public final class Arena {
     private List<Base> bases;
 
     /**
+     * Gets a base by its id
+     *
+     * @param id
+     * @return base
+     */
+    public Base getBase(int id) {
+        if (id < bases.size()) {
+            return bases.get(id);
+        }
+        return null;
+    }
+
+    /**
      * Represents an arenas base
      */
     @Getter
