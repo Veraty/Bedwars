@@ -30,6 +30,8 @@ import org.bukkit.util.Vector;
 @Getter
 public final class SerializeVector implements SerializeObject<Vector> {
 
+    private static final long serialVersionUID = 1L;
+    
     private final double x, y, z;
 
     /**
