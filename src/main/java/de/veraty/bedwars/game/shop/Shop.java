@@ -16,6 +16,7 @@
  */
 package de.veraty.bedwars.game.shop;
 
+import de.veraty.bedwars.inventory.ItemBuilder;
 import org.bukkit.Bukkit;
 import org.bukkit.inventory.Inventory;
 
@@ -38,7 +39,47 @@ public class Shop {
     public Shop(String title, ShopCategory[] categories) {
         this.categories = categories;
         this.inventories = new Inventory[categories.length];
-        this.listInventory = Bukkit.createInventory(null, 9 * 3, title);
+        this.listInventory = Bukkit.createInventory(null, 9 * 2, title);
+
+        for (int i = 0; i < 9; i++) {
+
+            if (categories.length > i) {
+                listInventory.setItem(i, new ItemBuilder()
+                        .setMaterial(categories[i].getMaterial())
+                        .setName("§r§l".concat(categories[i].getName()))
+                        .build());
+                createInventory(i, categories[i]);
+            }
+
+            listInventory.setItem(i + 9, ItemBuilder.NULL);
+
+        }
+
+    }
+
+    private void createInventory(int index, ShopCategory category) {
+        inventories[index] = Bukkit.createInventory(null, 9 * 4, "§7§l".concat(category.getName()));
+        for (int i = 0; i < category.size(); i++) {
+            ShopEntry shopEntry = category.get(index);
+
+            if (categories.length > i) {
+                inventories[i].setItem(i, new ItemBuilder()
+                        .setMaterial(categories[i].getMaterial())
+                        .setName("§r§l".concat(categories[i].getName()))
+                        .build());
+            }
+
+            inventories[index].setItem(i + 9, ItemBuilder.NULL);
+
+            inventories[index].setItem(i + 18, shopEntry.getItem());
+
+            inventories[index].setItem(i + (9 * 3), new ItemBuilder()
+                    .setMaterial(shopEntry.getMaterial())
+                    .setAmount(shopEntry.getPrice())
+                    .setName(String.format("§r§lPreis: §b%d", shopEntry.getPrice()))
+                    .build());
+
+        }
     }
 
 }
