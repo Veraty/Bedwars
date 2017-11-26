@@ -16,6 +16,7 @@
  */
 package de.veraty.bedwars.game;
 
+import de.veraty.bedwars.BedwarsPlugin;
 import lombok.Getter;
 import lombok.Setter;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -78,6 +79,13 @@ public abstract class Countdown extends BukkitRunnable {
         }
 
         this.onTick();
+    }
+
+    /**
+     * Scheules the Countdown
+     */
+    public void schedule() {
+        this.runTaskTimer(BedwarsPlugin.getInstance(), 0, 20l);
     }
 
     /**
