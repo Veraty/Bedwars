@@ -16,6 +16,7 @@
  */
 package de.veraty.bedwars.inventory;
 
+import de.veraty.bedwars.BedwarsPlugin;
 import de.veraty.bedwars.player.PlayerWrapper;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
@@ -52,5 +53,12 @@ public interface Clickable {
      * @param playerWrapper
      */
     void click(InventoryClickEvent event, PlayerWrapper playerWrapper);
+
+    /**
+     * Registers the clickable
+     */
+    default void registerClickable() {
+        BedwarsPlugin.getInstance().getClickables().add(this);
+    }
 
 }
