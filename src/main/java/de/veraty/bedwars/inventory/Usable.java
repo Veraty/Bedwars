@@ -16,6 +16,7 @@
  */
 package de.veraty.bedwars.inventory;
 
+import de.veraty.bedwars.BedwarsPlugin;
 import de.veraty.bedwars.player.PlayerWrapper;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
@@ -52,5 +53,12 @@ public interface Usable {
      * @param playerWrapper
      */
     void use(PlayerInteractEvent event, PlayerWrapper playerWrapper);
+
+    /**
+     * Registers the usable
+     */
+    default void registerUsable() {
+        BedwarsPlugin.getInstance().getUsables().add(this);
+    }
 
 }
