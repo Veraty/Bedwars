@@ -16,24 +16,39 @@
  */
 package de.veraty.bedwars.game;
 
+import lombok.Getter;
+
 /**
  * State of a game
  *
  * @author Merlin
  */
+@Getter
 public abstract class GameState {
+
+    private final Countdown countdown;
+
+    private final String name;
+    private final String[] scoreboardScores;
 
     /**
      * Constructs a GameState
+     *
+     * @param name
+     * @param countdown
+     * @param scoreboardScores
      */
-    public GameState() {
-        //TODO: Fill Constructor
+    public GameState(final String name, Countdown countdown, String[] scoreboardScores) {
+        this.countdown = countdown;
+        this.name = name;
+        this.scoreboardScores = scoreboardScores;
     }
 
     /**
      * Initiates the state
      */
     public void initiate() {
+        countdown.schedule();
     }
 
     /**
