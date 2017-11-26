@@ -20,6 +20,7 @@ import java.util.Map;
 import java.util.UUID;
 import lombok.Getter;
 import lombok.Setter;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
 /**
@@ -36,6 +37,9 @@ public class PlayerWrapper {
 
     private Player player;
 
+    // Selected Voting entry
+    private int votingId = -1;
+
     /**
      * Constructs a PlayerWrapper
      *
@@ -43,6 +47,15 @@ public class PlayerWrapper {
      */
     public PlayerWrapper(Player player) {
         this.player = player;
+    }
+
+    /**
+     * Plays a sound to the player
+     *
+     * @param sound
+     */
+    public void play(Sound sound) {
+        this.player.playSound(player.getEyeLocation(), sound, 1f, 1f);
     }
 
     /**
